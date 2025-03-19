@@ -13,4 +13,5 @@ import com.roniantonius.tugas.domain.entities.Tugas;
 public interface TugasRepository extends JpaRepository<Tugas, UUID>{
 	List<Tugas> findByTugasDaftarId(UUID tugasDaftarId); // ini mencari daftar tugas dari TugasDaftar
 	Optional<Tugas> findByTugasDaftarIdAndId(UUID tugasDaftarId, UUID id); // ini mencari tugas spesifik dari TugasDaftar
+	void deleteByTugasDaftarIdAndId(UUID tugasDaftarId, UUID id);
 }

@@ -10,4 +10,6 @@ public interface TugasService {
 	List<Tugas> listTugas(UUID tugasDaftarId);
 	Tugas createTugas(UUID tugasDaftarId, Tugas tugas);
 	Optional<Tugas> getTugas(UUID tugasDaftarId, UUID id);
+	Tugas updateTugas(UUID tugasDaftarId, UUID id, Tugas tugas);
+	void deleteTugas(UUID tugasDaftarId, UUID tugasId);
 }

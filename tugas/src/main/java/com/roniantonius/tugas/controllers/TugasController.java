@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,4 +45,16 @@ public class TugasController {
 	public Optional<TugasDto> getTugas(@PathVariable("task_list_id") UUID tugasDaftarId, @PathVariable("task_id") UUID id){
 		return tugasService.getTugas(tugasDaftarId, id).map(tugasMapper::toDto);
 	}
+	
+	@PutMapping(path = "/{task_id}")
+	public TugasDto updateTugas(@PathVariable("task_list_id") UUID tugasDaftarId, @PathVariable("task_id") UUID id, TugasDto tugasDto) {
+		Tugas tugasBaru = tugasService.updateTugas(tugasDaftarId, id, tugasMapper.fromDto(tugasDto));
+		return tugasMapper.toDto(tugasBaru);
+	}
+	
+	@DeleteMapping(path = "/{task_id}")
+	public void deleteTugas(@PathVariable("task_list_id") UUID tugasDaftarId, @PathVariable("task_id") UUID id) {
+		tugasService.deleteTugas(tugasDaftarId, tugasDaftarId);
+	}
+	
 }

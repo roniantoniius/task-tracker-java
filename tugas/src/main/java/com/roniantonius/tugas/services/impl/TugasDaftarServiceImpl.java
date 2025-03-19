@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.roniantonius.tugas.domain.entities.TugasDaftar;
 import com.roniantonius.tugas.repositories.TugasDaftarRepository;
 import com.roniantonius.tugas.services.TugasDaftarService;
+
+import jakarta.transaction.Transactional;
 @Service
 public class TugasDaftarServiceImpl implements TugasDaftarService{
 	private TugasDaftarRepository tugasDaftarRepository;
@@ -51,6 +53,7 @@ public class TugasDaftarServiceImpl implements TugasDaftarService{
 		return tugasDaftarRepository.findById(id);
 	}
 
+	@Transactional
 	@Override
 	public TugasDaftar updateTugasDaftar(UUID id, TugasDaftar tugasDaftar) {
 		// TODO Auto-generated method stub
